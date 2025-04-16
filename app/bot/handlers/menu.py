@@ -1,12 +1,12 @@
 from aiogram import Router, types
-from bot.keyboards import (
+from app.bot.keyboards import (
     main_menu_keyboard,
     product_categories_keyboard,
     products_keyboard,
     product_detail_keyboard,
     back_to_main_menu_keyboard,
 )
-from bot.services import (
+from app.bot.services import (
     get_company_info, get_contacts_info,
     get_products_by_category, get_product_detail,
 )
@@ -28,7 +28,7 @@ async def menu_handler(callback_query: types.CallbackQuery):
         await callback_query.message.edit_text("Выберите категорию продуктов:", reply_markup=keyboard)
     elif data.startswith('cat_'):
         category = data[len('cat_'):]
-        products = get_products_by_category(category)
+        products = await get_products_by_category(category)
         if products:
             keyboard = products_keyboard(category, products)
             await callback_query.message.edit_text(f"Продукты категории '{category}':", reply_markup=keyboard)
@@ -36,7 +36,7 @@ async def menu_handler(callback_query: types.CallbackQuery):
             await callback_query.answer("Продукты не найдены", show_alert=True)
     elif data.startswith('prod_'):
         product_id = data[len('prod_'):]
-        detail = get_product_detail(product_id)
+        detail = await get_product_detail(product_id)
         if detail:
             # Используем клавиатуру для деталей продукта с кнопкой "Заказать"
             keyboard = product_detail_keyboard(product_id)

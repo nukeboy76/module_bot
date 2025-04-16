@@ -3,9 +3,9 @@ import logging
 
 from aiogram import Bot, Dispatcher
 from aiogram.client.default import DefaultBotProperties
-from config import settings
-from bot.handlers import register_handlers
-from database import init_db
+from app.config import settings
+from app.bot.handlers import register_handlers
+from app.database import init_db
 
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)

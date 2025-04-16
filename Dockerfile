@@ -40,4 +40,5 @@ COPY ./app /app/app
 
 WORKDIR /app
 
-ENTRYPOINT ["python", "app/app.py"]
+ENTRYPOINT ["python", "-m", "app.app"]
+
