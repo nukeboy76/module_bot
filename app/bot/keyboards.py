@@ -13,7 +13,7 @@ def product_categories_keyboard() -> InlineKeyboardMarkup:
         # Захардкоженные категории – в будущем можно заменить динамическим получением
         [InlineKeyboardButton(text="Микроэлектроника", callback_data=f"cat_Микроэлектроника")],
         [InlineKeyboardButton(text="Модули", callback_data=f"cat_Модули")],
-        [InlineKeyboardButton(text="Аксессуары", callback_data=f"cat_Аксессуары")],
+        [InlineKeyboardButton(text="ПАК (Программно-аппаратный комплекс)", callback_data=f"cat_ПАК")],
         [InlineKeyboardButton(text="Назад", callback_data="back_main")],
     ])
     return keyboard
